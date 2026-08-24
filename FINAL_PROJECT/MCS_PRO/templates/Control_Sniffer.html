@@ -1,0 +1,52 @@
+{% load static %}
+{% include 'componas/Base.html' %}
+<title>Control Sniffer — WI-WN</title>
+</head>
+<body>
+    <style>
+        button{
+            margin:5vw;
+            padding: 2vw;
+            width: 15vw;
+        }
+        h4{
+            font-size:2vw;
+            margin-top: 3vh;
+        }
+    </style>
+<div class="app-layout">
+    {% include 'componas/Navbar.html' %}
+    <div class="main-content">
+        <header class="topbar">
+            <div class="topbar-title">Control Sniffer</div></header>
+        <main class="content-area">
+            <section id="ssec" class="card">
+                <h1 style="text-align: center;">Control Sniffer</h1>
+                <form action="" method="post">
+                    {% csrf_token %}
+                    <ul id="ST" style="display: flex;flex-direction: column;gap: 10vh;text-align: center;;">
+                    <li id="Url"><h4>Url Sniffer</h4>
+                        <button type="submit" name="Status" id="status" style="background-color: green;" value="UStart"><h5>Start</h5></button>
+                        <button type="submit" name="Status" id="status" style="background-color: red;" value="UStop"><h5>Stop</h5></button></li>
+                    <li id="Arp"><h4>Arp Sniffer</h4>
+                        <button type="submit" name="Status" id="status" style="background-color: green;" value="AStart"><h5>Start</h5></button>
+                        <button type="submit" name="Status" id="status" style="background-color: red;" value="AStop"><h5>Stop</h5></button></li>
+                    <li id="Dns"><h4>Dns Sniffer</h4>
+                        <button type="submit" name="Status" id="status" style="background-color: green;" value="DStart"><h5>Start</h5></button>
+                        <button type="submit" name="Status" id="status" style="background-color: red;" value="DStop"><h5>Stop</h5></button></li>
+                    <li id="Icmp"><h4>Icmp Sniffer</h4>
+                        <button type="submit" name="Status" id="status" style="background-color: green;" value="IStart"><h5>Start</h5></button>
+                        <button type="submit" name="Status" id="status" style="background-color: red;" value="IStop"><h5>Stop</h5></button></li>
+                    <li id="Packet"><h4>Packet Sniffer</h4>
+                        <button type="submit" name="Status" id="status" style="background-color: green;" value="PStart"><h5>Start</h5></button>
+                        <button type="submit" name="Status" id="status" style="background-color: red;" value="PStop"><h5>Stop</h5></button>
+                    </li>
+                </ul>
+                </form>
+            </section>
+        </main>
+        {% include 'componas/Footer.html' %}
+    </div>
+</div>
+</body>
+</html>

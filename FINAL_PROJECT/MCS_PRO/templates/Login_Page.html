@@ -1,0 +1,33 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login — WI-WN</title>
+    <link rel="stylesheet" href="{% static 'CSS/cyber_modern.css' %}">
+</head>
+<body>
+    <div class="login-wrapper">
+        <section id="osec" class="card">
+            {% if messages %}
+            <ul class="messages">
+                {% for message in messages %}
+                    <li {% if message.tags %}class="{{ message.tags }}"{% endif %}>{{ message }}</li>
+                {% endfor %}
+            </ul>
+            {% endif %}
+
+            <img src="{% static 'PICTURE/large__1_-removebg-preview.png' %}" alt="WI-WN"
+                 onerror="this.style.display='none'">
+            <h1 id="hl">WI-WN</h1>
+
+            <form action="" method="post">
+                {% csrf_token %}
+                {{ form.as_p }}
+                <button type="submit" id="SU">LOG IN</button>
+            </form>
+        </section>
+    </div>
+</body>
+</html>

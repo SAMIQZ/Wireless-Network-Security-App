@@ -1,0 +1,44 @@
+{% load static %}
+<aside class="sidebar">
+    <div class="sidebar-logo">
+        <img src="{% static 'PICTURE/large__1_-removebg-preview.png' %}" alt="WI-WN" onerror="this.style.display='none'">
+        <h2>WI-WN</h2>
+    </div>
+    <nav class="sidebar-nav">
+        <div class="nav-section-title">Main</div>
+        <a class="nav-link" href="{% url 'hom-page' %}"><span class="icon">🏠</span> <span>Home</span></a>
+        <a class="nav-link" href="{% url 'lis-page' %}"><span class="icon">📱</span> <span>Connected Devices</span></a>
+        <a class="nav-link" href="{% url 'inf-page' %}"><span class="icon">ℹ️</span> <span>Devices Info</span></a>
+        <a class="nav-link" href="{% url 'lm-page' %}"><span class="icon">💬</span> <span>Local Conversation</span></a>
+
+        <div class="nav-section-title">Network Tools</div>
+        <a class="nav-link" href="{% url 'ssi-page' %}"><span class="icon">📡</span> <span>SSID Detector</span></a>
+        <a class="nav-link" href="{% url 'net-page' %}"><span class="icon">🔧</span> <span>Network Use</span></a>
+        <a class="nav-link" href="{% url 'speed-page' %}"><span class="icon">🚄</span> <span>Network speed</span></a>
+        <a class="nav-link" href="{% url 'Performance-page' %}"><span class="icon">🎭</span> <span>Network Performance</span></a>
+        <a class="nav-link" href="{% url 'sac-page' %}"><span class="icon">🛜</span> <span>Show Network Connection</span></a>
+
+
+        <div class="nav-section-title">Sniffer Tools</div>
+        <a class="nav-link" href="{% url 'cs-page' %}"><span class="icon">🕵️</span> <span>Sniffer Control</span></a>
+        <a class="nav-link" href="{% url 'sp-page' %}"><span class="icon">📦</span> <span>Packet Sniffer</span></a>
+        <a class="nav-link" href="{% url 'icmp-page' %}"><span class="icon">🔍</span> <span>ICMP Sniffer</span></a>
+        <a class="nav-link" href="{% url 'dns-page' %}"><span class="icon">🔍</span> <span>DNS Sniffer</span></a>
+        <a class="nav-link" href="{% url 'arp-page' %}"><span class="icon">🔍</span> <span>ARP Sniffer</span></a>
+        <a class="nav-link" href="{% url 'uls-page' %}"><span class="icon">🔍</span> <span>URL Sniffer</span></a>
+
+        <div class="nav-section-title">Lookup</div>
+        <a class="nav-link" href="{% url 'pl-page' %}"><span class="icon">📶</span> <span>Ping</span></a>
+        <a class="nav-link" href="{% url 'tr-page' %}"><span class="icon">🚊</span> <span>Trace</span></a>
+
+        <div class="nav-section-title">Security</div>
+        <a class="nav-link" href="{% url 'gpu-page' %}"><span class="icon">🔑</span> <span>Password and User Generator</span></a>
+        <a class="nav-link" href="{% url 'cpu-page' %}"><span class="icon">💪</span> <span>Password and User Stringth</span></a>
+        <a class="nav-link" href="{% url 'passkd-page' %}"><span class="icon">💳</span> <span>Password Manager</span></a>
+        <a class="nav-link" href="{% url 'atc-page' %}"><span class="icon">🛡️</span> <span>Attack Detector</span></a>
+
+        <div class="nav-section-title">System</div>
+        <a class="nav-link" href="{% url 'settings-page' %}"><span class="icon">⚙️</span> <span>Settings</span></a>
+        <a class="nav-link" href="{% url 'abo-page' %}"><span class="icon">📄</span> <span>About</span></a>
+    </nav>
+</aside>

@@ -1,0 +1,117 @@
+{% load static %}
+{% include 'componas/Base.html' %}
+<title>Local Conversation — WI-WN</title>
+<style>
+    .chat-area {
+        display: flex;
+        flex-direction: column;
+        gap: 0.75rem;
+        max-height: 55vh;
+        overflow-y: auto;
+        padding: 1rem;
+        background: #020617;
+        border: 1px solid rgba(0, 212, 255, 0.15);
+        border-radius: 10px;
+        margin-bottom: 1.25rem;
+    }
+    .msg-box {
+        background: var(--bg-secondary);
+        border: 1px solid rgba(0, 212, 255, 0.12);
+        border-radius: 10px;
+        padding: 0.85rem 1.1rem;
+        max-width: 75%;
+    }
+    .msg-box.other {
+        align-self: flex-start;
+        border-left: 3px solid var(--accent-cyan);
+    }
+    .msg-box.mine {
+        align-self: flex-end;
+        border-right: 3px solid var(--accent-green);
+    }
+    .msg-fname {
+        color: var(--accent-cyan);
+        font-size: 0.8rem;
+        font-weight: 600;
+        margin-bottom: 0.25rem;
+    }
+    .msg-text {
+        color: var(--text-primary);
+        font-size: 0.95rem;
+        margin-bottom: 0.35rem;
+    }
+    .msg-meta {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        font-size: 0.75rem;
+        color: var(--text-muted);
+    }
+    .msg-meta a {
+        color: var(--accent-red);
+        text-decoration: none;
+        margin-left: 1rem;
+    }
+    .msg-meta a:hover { text-decoration: underline; }
+    .msg-date {
+        color: var(--text-muted);
+        font-size: 0.8rem;
+        text-align: center;
+        margin: 0.5rem 0;
+    }
+    .chat-form {
+        display: flex;
+        gap: 0.75rem;
+        align-items: flex-end;
+    }
+    .chat-form textarea {
+        flex: 1;
+        min-height: 60px;
+        max-height: 100px;
+    }
+</style>
+</head>
+<body>
+<div class="app-layout">
+    {% include 'componas/Navbar.html' %}
+    <div class="main-content">
+        <header class="topbar"><div class="topbar-title">Local Conversation</div></header>
+        <main class="content-area">
+            <section id="ssec" class="card">
+                <h1>Local Conversation</h1>
+                <div class="chat-area">
+                    {% for MASA in masc %}
+                        <div class="msg-date">{{ MASA.MsgDate }}</div>
+                        <div class="msg-box other">
+                            <div class="msg-fname">{{ MASA.FNAME }}</div>
+                            <div class="msg-text">{{ MASA.Msg }}</div>
+                            <div class="msg-meta">
+                                <span>{{ MASA.MsgTime }}</span>
+                                <a href="{% url 'del-page' MASA.id %}">remove</a>
+                            </div>
+                        </div>
+                    {% endfor %}
+                    {% for MASA1 in masc1 %}
+                        <div class="msg-date">{{ MASA1.MsgDate }}</div>
+                        <div class="msg-box mine">
+                            <div class="msg-fname">{{ MASA1.FNAME }}</div>
+                            <div class="msg-text">{{ MASA1.Msg }}</div>
+                            <div class="msg-meta">
+                                <span>{{ MASA1.MsgTime }}</span>
+                                <a href="{% url 'del-page' MASA1.id %}">remove</a>
+                            </div>
+                        </div>
+                    {% endfor %}
+                </div>
+                <form action="" method="post" class="chat-form">
+                    {% csrf_token %}
+                    <textarea name="Text" id="Mas" maxlength="300" rows="3" placeholder="Type a message..."></textarea>
+                    <input type="submit" id="FB" name="Status" value="Send">
+                </form>
+            </section>
+        </main>
+        {% include 'componas/Footer.html' %}
+    </div>
+</div>
+</body>
+</html>

@@ -1,0 +1,32 @@
+{% load static %}
+{% include 'componas/Base.html' %}
+<title>Device Info — WI-WN</title>
+</head>
+<body>
+<div class="app-layout">
+    {% include 'componas/Navbar.html' %}
+    <div class="main-content">
+        <header class="topbar"><div class="topbar-title">Connected Device Information</div></header>
+        <main class="content-area">
+            <section id="ssec" class="card">
+                <h1>Connected Device Information</h1>
+                <textarea id="TX" rows="20" readonly>
+{% for Info in info %}
+Device Name: {{ Info.hostname }}
+=======================================================================================
+IP ADDRESS: {{ Info.ip_address }}
+MAC ADDRESS: {{ Info.mac_address }}
+VENDOR: {{ Info.vendor }}
+STATUS: {{ Info.status }}
+
+{% empty %}
+No device information available.
+{% endfor %}
+                </textarea>
+            </section>
+        </main>
+        {% include 'componas/Footer.html' %}
+    </div>
+</div>
+</body>
+</html>

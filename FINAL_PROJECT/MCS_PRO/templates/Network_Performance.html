@@ -1,0 +1,49 @@
+{% load static %}
+{% include 'componas/Base.html' %}
+<title>Network Performance — WI-WN</title>
+</head>
+<body>
+<div class="app-layout">
+    {% include 'componas/Navbar.html' %}
+    <div class="main-content">
+        <header class="topbar"><div class="topbar-title">Network Performance</div></header>
+        <main class="content-area">
+            <section id="fsec" class="card">
+                <h1>Network Speed Check Result</h1>
+                    <div class="info-row" style="flex-direction: column; align-items: center; text-align: center; padding: 1.5rem;">
+                        <strong style="color: var(--accent-cyan); font-size: 0.9rem; margin-bottom: 0.5rem;">IP Address</strong>
+                        <span style="font-size: 1.6rem; color: var(--accent-green);">{{ IP }}</span>
+                    </div>
+                    <div class="info-row" style="flex-direction: column; align-items: center; text-align: center; padding: 1.5rem;">
+                        <strong style="color: var(--accent-cyan); font-size: 0.9rem; margin-bottom: 0.5rem;">Packet Count</strong>
+                        <span style="font-size: 1.6rem; color: var(--accent-green);">{{ Packet_Count }}</span>
+                    </div>
+                    <div class="info-row" style="flex-direction: column; align-items: center; text-align: center; padding: 1.5rem;">
+                        <strong style="color: var(--accent-cyan); font-size: 0.9rem; margin-bottom: 0.5rem;">Received Packets</strong>
+                        <span style="font-size: 1.6rem; color: var(--accent-green);">{{ Received_Packets }}</span>
+                    </div>
+                <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 1.25rem; margin-top: 1.5rem;">
+                    <div class="info-row" style="flex-direction: column; align-items: center; text-align: center; padding: 1.5rem;">
+                        <strong style="color: var(--accent-cyan); font-size: 0.9rem; margin-bottom: 0.5rem;">Loss Packets</strong>
+                        <span style="font-size: 1.6rem; color: var(--accent-green);">{{ Loss_Packets }}</span>
+                    </div>
+                    <div class="info-row" style="flex-direction: column; align-items: center; text-align: center; padding: 1.5rem;">
+                        <strong style="color: var(--accent-cyan); font-size: 0.9rem; margin-bottom: 0.5rem;">Loss Packet Rate</strong>
+                        <span style="font-size: 1.6rem; color: var(--accent-green);">{{ Loss_Packet_Rate }}</span>
+                    </div>
+                    <div class="info-row" style="flex-direction: column; align-items: center; text-align: center; padding: 1.5rem;">
+                        <strong style="color: var(--accent-cyan); font-size: 0.9rem; margin-bottom: 0.5rem;">Avg Latency</strong>
+                        <span style="font-size: 1.6rem; color: var(--accent-green);">{{ Avg_Latency }}</span>
+                    </div>
+                    <div class="info-row" style="flex-direction: column; align-items: center; text-align: center; padding: 1.5rem;">
+                        <strong style="color: var(--accent-cyan); font-size: 0.9rem; margin-bottom: 0.5rem;">Throughput</strong>
+                        <span style="font-size: 1.6rem; color: var(--accent-green);">{{ Throughput }}</span>
+                    </div>
+                </div>
+            </section>
+        </main>
+        {% include 'componas/Footer.html' %}
+    </div>
+</div>
+</body>
+</html>

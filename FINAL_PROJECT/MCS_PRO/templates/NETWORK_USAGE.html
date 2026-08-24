@@ -1,0 +1,33 @@
+{% load static %}
+{% include 'componas/Base.html' %}
+<title>Network Usage — WI-WN</title>
+</head>
+<body>
+<div class="app-layout">
+    {% include 'componas/Navbar.html' %}
+    <div class="main-content">
+        <header class="topbar"><div class="topbar-title">Network Usage</div></header>
+        <main class="content-area">
+            <section id="fsec" class="card">
+                <h1>Network Usage Result</h1>
+                <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 1.25rem; margin-top: 1.5rem;">
+                    <div class="info-row" style="flex-direction: column; align-items: center; text-align: center; padding: 1.5rem;">
+                        <strong style="color: var(--accent-cyan); font-size: 0.9rem; margin-bottom: 0.5rem;">Network Usage</strong>
+                        <span style="font-size: 1.6rem; color: var(--accent-green);">{{ USAGE }}</span>
+                    </div>
+                    <div class="info-row" style="flex-direction: column; align-items: center; text-align: center; padding: 1.5rem;">
+                        <strong style="color: var(--accent-cyan); font-size: 0.9rem; margin-bottom: 0.5rem;">Sent Packets</strong>
+                        <span style="font-size: 1.6rem; color: var(--accent-green);">{{ SENT }}</span>
+                    </div>
+                    <div class="info-row" style="flex-direction: column; align-items: center; text-align: center; padding: 1.5rem;">
+                        <strong style="color: var(--accent-cyan); font-size: 0.9rem; margin-bottom: 0.5rem;">Receive Packet</strong>
+                        <span style="font-size: 1.6rem; color: var(--accent-green);">{{ RESEVE }}</span>
+                    </div>
+                </div>
+            </section>
+        </main>
+        {% include 'componas/Footer.html' %}
+    </div>
+</div>
+</body>
+</html>

@@ -1,0 +1,47 @@
+{% load static %}
+{% include 'componas/Base.html' %}
+<title>Attack Detector — WI-WN</title>
+</head>
+<body>
+<div class="app-layout">
+    {% include 'componas/Navbar.html' %}
+    <div class="main-content">
+        <header class="topbar">
+            <div class="topbar-title">Network Auto Attack Detector</div>
+        </header>
+        <main class="content-area">
+            <section id="ssec" class="card">
+                {% if messages %}
+                <ul class="messages">
+                    {% for message in messages %}
+                        <li {% if message.tags %}class="{{ message.tags }}"{% endif %}>{{ message }}</li>
+                    {% endfor %}
+                </ul>
+                {% endif %}
+
+                <h1>Network Auto Attack Detector</h1>
+
+                <textarea id="TX" rows="16" readonly>
+{% for R in result %}
+{{ R }}
+{% empty %}
+No attacks detected yet.
+{% endfor %}
+                </textarea>
+
+                <form action="" method="post" style="display: flex; flex-wrap: wrap; gap: 0.75rem; align-items: center; margin-top: 1.5rem;">
+                    {% csrf_token %}
+                    <label for="FileName" style="margin: 0;">File Path:</label>
+                    <input type="text" name="FileName" id="FileName" required style="max-width: 260px;">
+                    <button type="submit" name="Export" value="PDF" class="btn-danger">Export As PDF</button>
+                    <button type="submit" name="Export" value="Word" class="btn-primary">Export As Word</button>
+                    <button type="submit" name="Export" value="CSV" class="btn-success">Export As CSV</button>
+                </form>
+                {{ P }}
+            </section>
+        </main>
+        {% include 'componas/Footer.html' %}
+    </div>
+</div>
+</body>
+</html>

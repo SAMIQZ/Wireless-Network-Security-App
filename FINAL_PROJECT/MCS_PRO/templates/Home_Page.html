@@ -1,0 +1,33 @@
+{% load static %}
+{% include 'componas/Base.html' %}
+<title>Home — WI-WN</title>
+</head>
+<body>
+<div class="app-layout">
+    {% include 'componas/Navbar.html' %}
+    <div class="main-content">
+        <header class="topbar">
+            <div class="topbar-title">Dashboard</div>
+            <div class="topbar-actions">
+                <span style="color: var(--text-secondary); font-size: 0.85rem;">WI-WN Security</span>
+            </div>
+        </header>
+
+        <main class="content-area">
+            <section id="sec2" class="card">
+                <h1>System Information</h1>
+                {% for info, Info in INFO %}
+                <div class="info-row" id="I1">
+                    <strong>{{ info }}</strong>
+                    <span>{{ Info }}</span>
+                </div>
+                {% empty %}
+                <p style="color: var(--text-secondary);">No system information available.</p>
+                {% endfor %}
+            </section>
+        </main>
+        {% include 'componas/Footer.html' %}
+    </div>
+</div>
+</body>
+</html>

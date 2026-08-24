@@ -1,0 +1,26 @@
+{% load static %}
+{% include 'componas/Base.html' %}
+<title>URL Sniffer — WI-WN</title>
+</head>
+<body>
+<div class="app-layout">
+    {% include 'componas/Navbar.html' %}
+    <div class="main-content">
+        <header class="topbar"><div class="topbar-title">URL Sniffer</div></header>
+        <main class="content-area">
+            <section id="ssec" class="card">
+                <h1>URL Sniffer</h1>
+                <textarea id="TX" rows="20" readonly>
+{% for item in packets %}
+{{ item }}
+{% empty %}
+No URL data available yet.
+{% endfor %}
+                </textarea>
+            </section>
+        </main>
+        {% include 'componas/Footer.html' %}
+    </div>
+</div>
+</body>
+</html>

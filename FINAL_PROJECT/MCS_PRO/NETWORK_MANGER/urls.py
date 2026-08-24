@@ -1,0 +1,35 @@
+from django.urls import path,re_path
+from . import views
+
+
+urlpatterns = [
+    path('',views.Welcome_Page,name='wel-page'),
+    path('Log',views.Login_Page,name='log-page'),
+    path('Home',views.Home,name='hom-page'),
+    path('List',views.Scanner,name='lis-page'),
+    path('Usage',views.NetworkUse,name='net-page'),
+    path('Info',views.DeviceInfo,name='inf-page'),
+    path('Ssid_d',views.SSID_D,name='ssi-page'),
+    path('About',views.About,name='abo-page'),
+    path('UrlSniff',views.UrlSniffer,name='uls-page'),
+    path('showA',views.SAC,name='sac-page'),
+    path('SNAAD',views.NAAD,name='atc-page'),
+    path('Local_M',views.LM,name='lm-page'),
+    path('Local_M/<int:id>',views.LMID,name='del-page'),
+    path('Generate_PU',views.Gentate_PU,name='gpu-page'),
+    path('Check_PU',views.Check_PU,name='cpu-page'),
+    path('Perform',views.Network_Performance,name='Performance-page'),
+    path('PLU',views.PING,name='pl-page'),
+    path('SP',views.PSI,name='sp-page'),
+    path('TR',views.TR,name='tr-page'),
+    path('AR',views.ASI,name='arp-page'),
+    path('DN',views.DSI,name='dns-page'),
+    path('IC',views.ISI,name='icmp-page'),
+    path('CS',views.CS,name='cs-page'),
+    path('passk',views.PAK,name='passk-page'),
+    path('passkd',views.PAKD,name='passkd-page'),
+    path('passkd/<int:id>',views.PAKDID,name='passkdid-page'),
+    path('passkd_info/<int:id>',views.PAKD_ID_INFO,name='passkdidi-page'),
+    path('Nspeed',views.NetworkSpeed,name='speed-page'),
+    path('Settings', views.App_Settings, name='settings-page'),
+]

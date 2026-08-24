@@ -1,0 +1,300 @@
+{% load static %}
+{% include 'componas/Base.html' %}
+<title>Settings — WI-WN</title>
+{% if theme_css %}
+<style>{{ theme_css|safe }}</style>
+{% endif %}
+</head>
+<body>
+<div class="app-layout">
+    {% include 'componas/Navbar.html' %}
+    <div class="main-content">
+        <header class="topbar">
+            <div class="topbar-title">Application Settings</div>
+            <div class="topbar-actions">
+                <span style="color: var(--text-secondary); font-size: 0.85rem;">Theme &amp; Detection</span>
+            </div>
+        </header>
+
+        <main class="content-area">
+            {% if messages %}
+            <ul class="messages">
+                {% for message in messages %}
+                <li {% if message.tags %}class="{{ message.tags }}"{% endif %}>{{ message }}</li>
+                {% endfor %}
+            </ul>
+            {% endif %}
+
+            <form method="post" action="" novalidate>
+                {% csrf_token %}
+
+                <!-- ========== Detection ========== -->
+                <section class="card" id="ssec" style="margin-bottom: 1.5rem;">
+                    <h1 style="margin-bottom: 0.35rem;">Detection Settings</h1>
+                    <p style="color: var(--text-secondary); margin-bottom: 1.25rem; font-size: 0.9rem;">
+                        Adjust attack detection thresholds. Changes apply immediately to the live sniffer.
+                    </p>
+
+                    <div class="settings-grid">
+                        <div class="form-group">
+                            <label for="Default_Report_path">Default Report Path</label>
+                            {{ form.Default_Report_path }}
+                            {% if form.Default_Report_path.errors %}<div class="field-error">{{ form.Default_Report_path.errors }}</div>{% endif %}
+                        </div>
+
+                        <div class="form-group" style="grid-column: 1 / -1;">
+                            <label for="Ignore_Protection_Macs">Ignored MAC Addresses (comma-separated)</label>
+                            {{ form.Ignore_Protection_Macs }}
+                            {% if form.Ignore_Protection_Macs.errors %}<div class="field-error">{{ form.Ignore_Protection_Macs.errors }}</div>{% endif %}
+                        </div>
+
+                        <div class="form-group">
+                            <label for="THRESHOLD">Suspicious Traffic Threshold</label>
+                            {{ form.THRESHOLD }}
+                            <small class="hint">TCP SYN / suspicious packets (default 1000)</small>
+                        </div>
+                        <div class="form-group">
+                            <label for="Mac_Threshold">MAC Flood Threshold</label>
+                            {{ form.Mac_Threshold }}
+                            <small class="hint">Unique MACs in time window (default 100)</small>
+                        </div>
+                        <div class="form-group">
+                            <label for="Ip_Threshold">IP / DoS Flood Threshold</label>
+                            {{ form.Ip_Threshold }}
+                            <small class="hint">Default 1000</small>
+                        </div>
+                        <div class="form-group">
+                            <label for="Time_Window">Time Window (seconds)</label>
+                            {{ form.Time_Window }}
+                            <small class="hint">Window for flood calculations (default 60)</small>
+                        </div>
+                        <div class="form-group">
+                            <label for="Brute_Force_Threshold">Brute-Force Threshold</label>
+                            {{ form.Brute_Force_Threshold }}
+                            <small class="hint">Failed logins before alert (default 2)</small>
+                        </div>
+                        <div class="form-group">
+                            <label for="Icmp_Threshold">ICMP Reply Threshold</label>
+                            {{ form.Icmp_Threshold }}
+                            <small class="hint">Deauth / ping flood (default 100)</small>
+                        </div>
+                        <div class="form-group">
+                            <label for="Request_Limit">Request Limit</label>
+                            {{ form.Request_Limit }}
+                            <small class="hint">General request limit (default 1000)</small>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- ========== Theme / UI ========== -->
+                <section class="card" id="fsec" style="margin-bottom: 1.5rem;">
+                    <h1 style="margin-bottom: 0.35rem;">Appearance</h1>
+                    <p style="color: var(--text-secondary); margin-bottom: 1.25rem; font-size: 0.9rem;">
+                        Colors, fonts and layout. Preview updates after you save.
+                    </p>
+
+                    <div class="settings-grid">
+                        <div class="form-group">
+                            <label for="theme_mode">Theme Mode</label>
+                            {{ form.theme_mode }}
+                        </div>
+                        <div class="form-group">
+                            <label for="font_family">Font Family</label>
+                            {{ form.font_family }}
+                        </div>
+                        <div class="form-group">
+                            <label for="font_size_base">Base Font Size (px)</label>
+                            {{ form.font_size_base }}
+                        </div>
+                        <div class="form-group">
+                            <label for="border_radius">Border Radius (px)</label>
+                            {{ form.border_radius }}
+                        </div>
+
+                        <div class="form-group color-row">
+                            <label for="accent_color">Accent Color</label>
+                            <div class="color-input-wrap">
+                                {{ form.accent_color }}
+                                <span class="color-hex" id="hex_accent">{{ form.accent_color.value }}</span>
+                            </div>
+                        </div>
+                        <div class="form-group color-row">
+                            <label for="secondary_color">Secondary Color</label>
+                            <div class="color-input-wrap">
+                                {{ form.secondary_color }}
+                                <span class="color-hex" id="hex_secondary">{{ form.secondary_color.value }}</span>
+                            </div>
+                        </div>
+                        <div class="form-group color-row">
+                            <label for="bg_primary">Background</label>
+                            <div class="color-input-wrap">
+                                {{ form.bg_primary }}
+                                <span class="color-hex" id="hex_bg">{{ form.bg_primary.value }}</span>
+                            </div>
+                        </div>
+                        <div class="form-group color-row">
+                            <label for="bg_card">Card Background</label>
+                            <div class="color-input-wrap">
+                                {{ form.bg_card }}
+                                <span class="color-hex" id="hex_card">{{ form.bg_card.value }}</span>
+                            </div>
+                        </div>
+                        <div class="form-group color-row">
+                            <label for="text_primary">Text Color</label>
+                            <div class="color-input-wrap">
+                                {{ form.text_primary }}
+                                <span class="color-hex" id="hex_text">{{ form.text_primary.value }}</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Live preview box -->
+                    <div class="theme-preview" id="themePreview" style="margin-top: 1.5rem;">
+                        <div class="preview-card">
+                            <strong>Live Preview</strong>
+                            <p style="margin: 0.5rem 0 0; opacity: 0.85;">Sample card with current colors &amp; font.</p>
+                        </div>
+                    </div>
+                </section>
+
+                <div style="display: flex; gap: 0.75rem; flex-wrap: wrap;">
+                    <button type="submit" class="btn-primary">Save Settings</button>
+                    <a href="{% url 'hom-page' %}" class="btn-secondary" style="text-decoration: none; display: inline-flex; align-items: center;">Cancel</a>
+                </div>
+            </form>
+        </main>
+        {% include 'componas/Footer.html' %}
+    </div>
+</div>
+
+<style>
+.settings-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+  gap: 1rem 1.25rem;
+}
+.form-group label {
+  display: block;
+  margin-bottom: 0.35rem;
+  color: var(--text-secondary);
+  font-size: 0.85rem;
+  font-weight: 500;
+}
+.form-group input[type="text"],
+.form-group input[type="number"],
+.form-group select,
+.form-group textarea {
+  width: 100%;
+  background: var(--bg-input, #0f172a);
+  border: 1px solid var(--border-color);
+  color: var(--text-primary);
+  border-radius: var(--radius-sm);
+  padding: 0.55rem 0.75rem;
+  font-size: 0.95rem;
+  transition: border-color 0.2s, box-shadow 0.2s;
+}
+.form-group input:focus,
+.form-group select:focus,
+.form-group textarea:focus {
+  outline: none;
+  border-color: var(--accent-cyan);
+  box-shadow: 0 0 0 3px rgba(0, 212, 255, 0.15);
+}
+.form-group input[type="color"] {
+  width: 48px;
+  height: 36px;
+  padding: 2px;
+  border-radius: 8px;
+  border: 1px solid var(--border-color);
+  background: transparent;
+  cursor: pointer;
+}
+.color-input-wrap {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+.color-hex {
+  font-family: var(--font-mono, monospace);
+  font-size: 0.85rem;
+  color: var(--text-secondary);
+}
+.hint {
+  display: block;
+  margin-top: 0.25rem;
+  color: var(--text-muted, #64748b);
+  font-size: 0.75rem;
+}
+.field-error {
+  color: var(--accent-red, #ef4444);
+  font-size: 0.8rem;
+  margin-top: 0.25rem;
+}
+.theme-preview .preview-card {
+  background: var(--bg-card);
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius);
+  padding: 1.25rem;
+  color: var(--text-primary);
+  box-shadow: var(--shadow-glow);
+}
+.btn-secondary {
+  background: transparent;
+  border: 1px solid var(--border-color);
+  color: var(--text-primary);
+  padding: 0.6rem 1.25rem;
+  border-radius: var(--radius-sm);
+  cursor: pointer;
+  font-size: 0.95rem;
+}
+.btn-secondary:hover {
+  border-color: var(--accent-cyan);
+  color: var(--accent-cyan);
+}
+</style>
+
+<script>
+(function () {
+  function bindColor(id, hexId) {
+    var el = document.getElementById(id);
+    var hex = document.getElementById(hexId);
+    if (!el) return;
+    el.addEventListener('input', function () {
+      if (hex) hex.textContent = el.value;
+      applyPreview();
+    });
+  }
+  function applyPreview() {
+    var root = document.documentElement;
+    var accent = document.getElementById('accent_color');
+    var secondary = document.getElementById('secondary_color');
+    var bg = document.getElementById('bg_primary');
+    var card = document.getElementById('bg_card');
+    var text = document.getElementById('text_primary');
+    var font = document.getElementById('font_family');
+    var size = document.getElementById('font_size_base');
+    var radius = document.getElementById('border_radius');
+    if (accent) root.style.setProperty('--accent-cyan', accent.value);
+    if (secondary) root.style.setProperty('--accent-green', secondary.value);
+    if (bg) root.style.setProperty('--bg-primary', bg.value);
+    if (card) root.style.setProperty('--bg-card', card.value);
+    if (text) root.style.setProperty('--text-primary', text.value);
+    if (font) {
+      root.style.setProperty('--font-main', font.value);
+      document.body.style.fontFamily = font.value;
+    }
+    if (size) document.body.style.fontSize = size.value + 'px';
+    if (radius) root.style.setProperty('--radius', radius.value + 'px');
+  }
+  ['accent_color', 'secondary_color', 'bg_primary', 'bg_card', 'text_primary'].forEach(function (id) {
+    bindColor(id, 'hex_' + id.replace('accent_color', 'accent').replace('secondary_color', 'secondary').replace('bg_primary', 'bg').replace('bg_card', 'card').replace('text_primary', 'text'));
+  });
+  ['font_family', 'font_size_base', 'border_radius', 'theme_mode'].forEach(function (id) {
+    var el = document.getElementById(id);
+    if (el) el.addEventListener('change', applyPreview);
+  });
+  applyPreview();
+})();
+</script>
+</body>
+</html>

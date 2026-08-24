@@ -1,0 +1,25 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Welcome — WI-WN</title>
+    <link rel="stylesheet" href="{% static 'CSS/cyber_modern.css' %}">
+</head>
+<body>
+    <div class="welcome-wrapper">
+        <section id="wsec" class="card">
+            <form action="{% url 'log-page' %}">
+                <div>
+                    <img src="{% static 'PICTURE/large__1_-removebg-preview.png' %}" alt="WI-WN"
+                         onerror="this.src=''; this.alt='WI-WN';">
+                </div>
+                <h1>WI-WN</h1>
+                <p class="tagline">All In Your Hand</p>
+                <button type="submit">Welcome</button>
+            </form>
+        </section>
+    </div>
+</body>
+</html>

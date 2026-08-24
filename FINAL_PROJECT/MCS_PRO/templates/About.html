@@ -1,0 +1,31 @@
+{% load static %}
+{% include 'componas/Base.html' %}
+<title>About — WI-WN</title>
+</head>
+<body>
+<div class="app-layout">
+    {% include 'componas/Navbar.html' %}
+    <div class="main-content">
+        <header class="topbar">
+            <div class="topbar-title">About</div>
+        </header>
+        <main class="content-area">
+            <section id="ssec" class="card" style="margin-top: 20vh;">
+                <h1 style="text-align:center;">About WI-WN</h1>
+                <p style="color: var(--text-secondary); font-size: 1.05rem; line-height: 1.8; max-width: 720px;">
+                    <strong style="color: var(--accent-cyan);">WI-WN</strong> (Wireless Intelligence – Wireless Network)
+                    is a Wireless Network Security Application designed for monitoring, detecting threats,
+                    and managing network security tools.
+                    <br><br>
+                    Features include packet sniffing, attack detection, password management,
+                    network diagnostics (Ping / Traceroute), SSID detection, and more.
+                    <br><br>
+                    Built as a graduation / portfolio project in Communications Technology.
+                </p>
+            </section>
+        </main>
+        {% include 'componas/Footer.html' %}
+    </div>
+</div>
+</body>
+</html>

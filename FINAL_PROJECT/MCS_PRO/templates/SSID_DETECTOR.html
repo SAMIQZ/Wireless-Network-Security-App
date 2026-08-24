@@ -1,0 +1,20 @@
+{% load static %}
+{% include 'componas/Base.html' %}
+<title>SSID Detector — WI-WN</title>
+</head>
+<body>
+<div class="app-layout">
+    {% include 'componas/Navbar.html' %}
+    <div class="main-content">
+        <header class="topbar"><div class="topbar-title">SSID Detector</div></header>
+        <main class="content-area">
+            <section id="ssec" class="card">
+                <h1>SSID Result</h1>
+                <textarea id="TX" rows="20" readonly>{{ ssids }}</textarea>
+            </section>
+        </main>
+        {% include 'componas/Footer.html' %}
+    </div>
+</div>
+</body>
+</html>
