@@ -1,21 +1,21 @@
-Wireless Network Security App (MCS Pro)
+## **Wireless Network Security App (MCS Pro)**
 
 
-A comprehensive Django-based web application for real-time wireless network monitoring, threat detection, and security analysis.
-Developed as a graduation project in Communications Technology.
-
-
-
-Python
-Django
-Scapy
-License
-Platform
-Status
+## A comprehensive Django-based web application for real-time wireless network monitoring, threat detection, and security analysis.
+## Developed as a graduation project in Communications Technology.
 
 
 
-Overview
+**Python**
+**Django**
+**Scapy**
+**License**
+**Platform**
+**Status**
+
+
+
+## Overview
 
 Wireless Network Security App is a full-stack security tool designed to monitor, analyze, and protect wireless (Wi-Fi) networks in real time.
 
@@ -29,71 +29,56 @@ Primary Goal: Detect and alert on suspicious network activity (ARP spoofing, MAC
 
 
 
-Key Features
+## Key Features
 
 Real-Time Threat Detection
 
-Attack Type	Detection Method
-ARP Spoofing	MAC–IP mapping inconsistency
-IP Spoofing	Source IP validation
-MAC Flooding	Rapid unique MAC address count
-DoS / Flooding	Packet rate thresholds (TCP / IP / ICMP)
-Brute-Force Attempts	Failed login pattern detection
-Suspicious Traffic	Known malware ports + payload signatures
-Deauthentication / ICMP	Abnormal ICMP reply rates
-
-Network Monitoring & Analysis
-
-
-Live packet sniffers (ARP, DNS, ICMP, TCP, HTTP/URL)
-
-Device discovery via ARP scanning
-
-
-Internet speed test (download / upload / ping)
-
-Latency, packet loss & throughput analysis
-
-Active connections listing
+- Attack Type	Detection Method
+- ARP Spoofing	MAC–IP mapping inconsistency
+- IP Spoofing	Source IP validation
+- MAC Flooding	Rapid unique MAC address count
+- DoS / Flooding	Packet rate thresholds (TCP / IP / ICMP)
+- Brute-Force Attempts	Failed login pattern detection
+- Suspicious Traffic	Known malware ports + payload signatures
+- Deauthentication / ICMP	Abnormal ICMP reply rates
+- Network Monitoring & Analysis
+- Live packet sniffers (ARP, DNS, ICMP, TCP, HTTP/URL)
+- Device discovery via ARP scanning
+- Internet speed test (download / upload / ping)
+- Latency, packet loss & throughput analysis
+- Active connections listing
 
 
-Security Utilities
+## Security Utilities
+
+- Strong password generator
+- Password strength checker
+- Local password vault
+- Automatic PDF attack reports
+- Failed login tracking with lockout logic
 
 
-Strong password generator
+## Additional Tools
 
-Password strength checker
-
-Local password vault
-
-Automatic PDF attack reports
-
-Failed login tracking with lockout logic
-
-
-Additional Tools
-
-
-Traceroute
-
-DNS query monitoring
+- Traceroute
+- DNS query monitoring
 
 
 
 
-Technology Stack
+## Technology Stack
 
-Layer	Technologies
-Backend	Python 3.10+, Django 6.0
-Packet Analysis	Scapy 2.7
-Network Tools	python-nmap, ping3, psutil, speedtest-cli
-Reporting	ReportLab, python-docx, openpyxl, matplotlib
-Authentication	Django Auth + Paramiko (SSH)
-Frontend	HTML / CSS  (custom templates)
-Security Libraries	pyOpenSSL, Requests
+- Layer	Technologies
+- Backend	Python 3.10+, Django 6.0
+- Packet Analysis	Scapy 2.7
+- Network Tools	python-nmap, ping3, psutil, speedtest-cli
+- Reporting	ReportLab, python-docx, openpyxl, matplotlib
+- Authentication	Django Auth + Paramiko (SSH)
+- Frontend	HTML / CSS  (custom templates)
+- Security Libraries	pyOpenSSL, Requests
 
 
-Project Structure
+## Project Structure
 
 Wireless-Network-Security-App/
 ├── FINAL_PROJECT/
@@ -120,12 +105,12 @@ Wireless-Network-Security-App/
 └── README.md
 
 
-Note: A recommended cleaner structure is documented in docs/IMPROVEMENTS.md.
+## Note: A recommended cleaner structure is documented in docs/IMPROVEMENTS.md.
 
 
 
 
-Installation & Setup
+## Installation & Setup
 
 Prerequisites
 
@@ -139,79 +124,91 @@ Npcap (required by Scapy for packet capture)
 Administrator privileges (recommended for packet sniffing)
 
 
-Steps
+## Steps
 
 # 1. Clone the repository
+```spl
 git clone https://github.com/SAMIQZ/Wireless-Network-Security-App.git
 cd Wireless-Network-Security-App/FINAL_PROJECT/MCS_PRO
-
+```
 # 2. Create and activate a virtual environment
+```spl
 python -m venv venv
+```
+```spl
 venv\Scripts\activate
+```
 
 # 3. Install dependencies
+```spl
 pip install -r requirements.txt
+```
 
 # 4. Apply database migrations
+```spl
 python manage.py migrate
-
+```
 # 5. (Optional) Create a Django superuser for the admin panel
+```spl
 python manage.py createsuperuser
+```
 
 # 6. Run the development server
+```spl
 python manage.py runserver
+```
 
 Open your browser at: http://127.0.0.1:8000
 
 
 
-Usage Highlights
+## Usage Highlights
 
 
-Login using SSH credentials of a Windows host (hostname + username + password).
+- Login using SSH credentials of a Windows host (hostname + username + password).
 
-Configure protection thresholds from the Home dashboard.
+- Configure protection thresholds from the Home dashboard.
 
-Start individual sniffers or the full Attack Detection engine.
+- Start individual sniffers or the full Attack Detection engine.
 
-View live alerts, generate PDF reports, and monitor network performance.
+- View live alerts, generate PDF reports, and monitor network performance.
 
-Use the built-in password tools and local password vault.
+- Use the built-in password tools and local password vault.
 
 
 
-Educational Attack Scripts
+## Educational Attack Scripts
 
 The ATTACKS/ folder contains scripts used for testing the detection engine in a controlled lab environment:
 
 
 
-ARP Spoofing
+- ARP Spoofing
 
-MAC Flooding
+- MAC Flooding
 
-ICMP Smurf
+- ICMP Smurf
 
-DoS / Flooding
+- DoS / Flooding
 
-Brute-force simulations
+- Brute-force simulations
 
-Suspicious TCP / UDP traffic generators
-
-
-
-Warning: These scripts are for educational and authorized testing purposes only. Unauthorized use against networks you do not own or have explicit permission to test is illegal.
+- Suspicious TCP / UDP traffic generators
 
 
 
+**Warning: These scripts are for educational and authorized testing purposes only. Unauthorized use against networks you do not own or have explicit permission to test is illegal.**
 
-Security Notes & Limitations
+
+
+
+## Security Notes & Limitations
 
 This project was built for educational and research purposes. Please be aware of the following:
 
-Author
+## Author
 
-SAMIQZ
+**SAMIQZ**
 Graduation Project – Communications Technology
 
 
@@ -222,9 +219,9 @@ This project is licensed under the MIT License. See the LICENSE file for details
 
 
 
-Disclaimer
+## Disclaimer
 
 This software is provided for educational and research purposes only.
 The author is not responsible for any misuse of the tools or scripts included in this repository.
 Related: [Malware Analysis Reports](https://github.com/USERNAME/malware-analysis-reports)
-Always obtain proper authorization before testing security tools on any network.
+Always obtain proper authorization before testing security tools on any network.##
